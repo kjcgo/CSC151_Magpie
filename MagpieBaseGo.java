@@ -1,5 +1,5 @@
 //needed for ArrayLists
-import java.math;
+//import java.math;
 import java.util.ArrayList;
 import java.util.List;
 public class MagpieBaseGo{
