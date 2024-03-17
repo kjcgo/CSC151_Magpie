@@ -1,5 +1,4 @@
 //needed for ArrayLists
-//import java.math;
 import java.util.ArrayList;
 import java.util.List;
 public class MagpieBaseGo{
@@ -42,7 +41,7 @@ public class MagpieBaseGo{
    "Passacaglia for Violin and Viola by Halvorsen", "Strauss Duet Concertino for Clarinet and Bassoon"};
    
    //other genres
-   String[] genres = {"jazz", "pop", "rock", "country", "blues", "electronic", "funk", "indie"};
+   String[] genres = {"jazz", "kpop","pop", "rock", "country", "blues", "electronic", "funk", "indie"};
    //remember genre if needed
    String yourGenre = " ";
    //emotions
@@ -62,79 +61,80 @@ public class MagpieBaseGo{
    
       char nextNode = whereTo(statement.toLowerCase());
       String response = "ERROR!";
-      if(nextNode == 'b'){
-         response = "Would you like to learn more about classical music?";
-         lastNode = 'b';
+      switch(nextNode){
+         case 'b':
+            response = "Would you like to learn more about classical music?";
+            lastNode = 'b';
+            break;
+         case 'c':
+            response = "I like classical music too! What is your favorite orchestral instrument?";
+            lastNode = 'c';
+            break;
+         case 'd':
+            response = "Can I recommend an instrument for you?";
+            lastNode = 'd';
+            break;
+         case 'e':
+            response = nodeE(statement);
+            lastNode = 'e';
+            break;
+         case 'f':
+            response = "Well, what music do you like?";
+            lastNode = 'f';
+            break;
+         case 'g':
+            response = nodeG(statement);
+            lastNode = 'g';
+            break;
+         case 'h':
+            response = "Classical music can be categorized into the Baroque, Classical, Romantic, and 20th century eras. May I recommend a piece to you?";
+            lastNode = 'h';
+            break;
+         case 'i':
+            response = "Would you like a sonata, concerto, or duet piece?";
+            lastNode = 'i';
+            break;
+         case 'j':
+            response = "Well, I will pick for you.";
+            lastNode = 'j';
+            break;
+         case 'k':
+            response = nodeK(statement);
+            lastNode  = 'k';
+            break;
+         case 'l':
+            response = "What is your favorite piece?";
+            lastNode = 'l';
+            break;
+         case 'm':
+            response = "I will give that a listen, thanks!";
+            lastNode  = 'm';
+            break;
+         case 'n':
+            response = nodeN(statement);
+            lastNode = 'n';
+            break;
+         case 'o':
+            response = nodeO(statement);
+            lastNode = 'o';
+            break;
+         case 'p':  
+            response = "Can we talk about classical music?";
+            lastNode = 'p';
+            break;
+         case 'q':
+            response = "Tell me more.";
+            lastNode = 'q';
+            break;
+         case 'r':
+            response = "I like talking about music.";
+            lastNode = 'r';
+            break;
+         case 's':
+            response = "Let's talk about classical music.";
+            lastNode = 's';
+            break;
       }
-      if(nextNode == 'c'){
-         response = "I like classical music too! What is your favorite orchestral instrument?";
-         lastNode = 'c';
-      }
-      if(nextNode == 'd'){
-         response = "Can I recommend an instrument for you?";
-         lastNode = 'd';
-      }
-      if(nextNode == 'e'){
-         response = nodeE(statement);
-         lastNode = 'e';
-      }
-      if(nextNode == 'f'){
-         response = "Well, what music do you like?";
-         lastNode = 'f';
-      }
-      if(nextNode == 'g'){
-         response = nodeG(statement);
-         lastNode = 'g';
-      }
-      if(nextNode == 'h'){
-         response = "Classical music can be categorized into the Baroque, Classical, Romantic, and 20th century eras. May I recommend a piece to you?";
-         lastNode = 'h';
-      }
-      if(nextNode == 'i'){
-         response = "Would you like a sonata, concerto, or duet piece?";
-         lastNode = 'i';
-      }
-      if(nextNode == 'j'){
-         response = "Well, I will pick for you.";
-         lastNode = 'j';
-      }
-      if(nextNode == 'k'){
-         response = nodeK(statement);
-         lastNode  = 'k';
-      }
-      if(nextNode == 'l'){
-         response = "What is your favorite piece?";
-         lastNode = 'l';
-      }
-      if(nextNode == 'm'){
-         response = "I will give that a listen, thanks!";
-         lastNode  = 'm';
-      }
-      if(nextNode == 'n'){
-         response = nodeN(statement);
-         lastNode = 'n';
-      }
-      if(nextNode == 'o'){
-         response = nodeO(statement);
-         lastNode = 'o';
-      }
-      if(nextNode == 'p'){
-         response = "Can we talk about classical music?";
-         lastNode = 'p';
-      }
-      if(nextNode == 'q'){
-         response = "Tell me more.";
-         lastNode = 'q';
-      }
-      if(nextNode == 'r'){
-         response = "I like talking about music.";
-         lastNode = 'r';
-      }
-      if(nextNode == 's'){
-         response = "Let's talk about classical music.";
-         lastNode = 's';
-      }
-      
       return response;
 	}
    //returns which node to go to next. 
@@ -152,49 +152,44 @@ public class MagpieBaseGo{
          if(myPhrase != "none"){
             validInvalid = true;
          }
-         
          //return where the next target is
-         if(lastNode == 'c'){
-            if(validInvalid){
-               return 'e';
-            }
-            else{
-               return 'd';
-            }
-         }
-         else if(lastNode == 'e'){
-            if(validInvalid){
-               return 'g';
-            }
-            else{
-               return 'h';
-            }
-         }
-         else if(lastNode == 'f'){
-            if(validInvalid){
-               return 'n';
-            }
-            else{
-               return 'p';
-            }
-         }
-         else if(lastNode == 'i'){
-            if(validInvalid){
-               return 'k';
-            }
-            else{
-               return 'j';
-            }
-         }
-         else if(lastNode == 'n'){
-            if(validInvalid){
-               return 'o';
-            }
-            else{
-               return 'q';
-            }
-         }
-         else{
+         switch(lastNode){
+            case 'c':
+               if(validInvalid){
+                  return 'e';
+               }
+               else{
+                  return 'd';
+               }
+            case 'e':
+               if(validInvalid){
+                  return 'g';
+               }
+               else{
+                  return 'h';
+               }
+            case 'f':
+               if(validInvalid){
+                  return 'n';
+               }
+               else{
+                  return 'p';
+               }
+            case 'i':
+               if(validInvalid){
+                  return 'k';
+               }
+               else{
+                  return 'j';
+               }
+            case 'n':
+               if(validInvalid){
+                  return 'o';
+               }
+               else{
+                  return 'q';
+               }
+         default:
             return 'y';
          }
       }
@@ -205,142 +200,123 @@ public class MagpieBaseGo{
          //boolean affirm = findKeyword(statement, affirmative);
          boolean affirm = false;
          
-         if (affirmative.contains(statement)){
+         if(affirmative.contains(statement)){
             affirm = true;
          }
-         
-         
-         if(lastNode == 'a'){
-            if(affirm){
-               return 'c';
-            }
-            else{
-               return 'b';
-            }
-         }
-         else if(lastNode == 'b'){
-            if(affirm){
-               return 'd';
-            }
-            else{
-               return 'f';
-            }
-         }
-         else if(lastNode == 'd'){
-            if(affirm){
-               return 'e';
-            }
-            else{
-               return 'f';
-            }
-         }
-         else if(lastNode == 'g'){
-            if(affirm){
-               return 'i';
-            }
-            else{
-               return 'l';
-            }
-         }
-         else if(lastNode == 'h'){
-            if(affirm){
-               return 'i';
-            }
-            else{
-               return 'r';
-            }
-         }
-         else if(lastNode == 'p'){
-            if(affirm){
-               return 'h';
-            }
-            else{
-               return 'r';
-            }
-         }  
-         else{
-            return 'y';
-         }       
+         switch(lastNode){
+            case 'a':
+               if(affirm){
+                  return 'c';
+               }
+               else{
+                  return 'b';
+               }
+            case 'b':
+               if(affirm){
+                  return 'd';
+               }
+               else{
+                  return 'f';
+               }
+            case 'd':
+               if(affirm){
+                  return 'e';
+               }
+               else{
+                  return 'f';
+               }
+            case 'g':
+               if(affirm){
+                  return 'i';
+               }
+               else{
+                  return 'l';
+               }
+            case 'h':
+               if(affirm){
+                  return 'i';
+               }
+               else{
+                  return 'r';
+               }
+            case 'p':
+               if(affirm){
+                  return 'h';
+               }
+               else{
+                  return 'r';
+               }
+            default:
+               return 'y';  
+            }      
       }
       else if(automatic.contains(lastNode)){
-         if(lastNode == 'j'){
-            return 'k';
-         }
-         else if(lastNode == 'k' || lastNode == 'm'){
-            return 'r';
-         }
-         else if(lastNode == 'l'){
-            return 'm';
-         }       
-         else if(lastNode == 'o' || lastNode == 'q'){
-            return 'p';
-         }
-         else if(lastNode == 'r'){
-            return 's';
-         }
-         else if(lastNode == 's'){
-            return 'h';
-         }
-         else{
-         return 'y';
-         }
+         switch(lastNode){
+            case 'j':
+               return 'k';
+            case 'k':
+            case 'm':
+               return 'r';
+            case 'l':
+               return 'm';
+            case 'o':
+            case 'q':
+               return 'p';               
+            case 'r':
+               return 's';
+            case 's':
+               return 'h';
+            default: 
+               return 'y';
+            }
       }
       else{
          return 'y';
+         }
       }
-   } 
-
-	
    //returns sections of the statement
-   private String findPhrase(String statement){
-      if(lastNode == 'c'){
-         for(int i = 0; i < orchestra.length; i++){
-            if(statement.contains(orchestra[i])){
-               orchFamily = i;
-               return orchestra[i];
-            }
-         }
-         return("none");
-      }
-      else if(lastNode == 'e'){
-         for(int i = 0; i < eras.length; i++){
-            if(statement.contains(eras[i])){
-               erasMatch = i;
-               return eras[i];
-            }
-         }
-         return("none");
-      }
-      else if(lastNode == 'f'){
-         for(int i = 0; i < genres.length; i++){
-            if(statement.contains(genres[i])){
-               return genres[i];
-            }
-         }
-         return("none");
-      }
-      else if(lastNode == 'i'){
-         for(int i = 0; i < format.length; i++){
-            if(statement.contains(format[i])){
-               formatMatch = i;
-               return format[i];
-            }
-         }
-         return("none");
-      }
-      else if(lastNode == 'n'){
-         for(int i = 0; i < feelings.length; i++){
-            if(statement.contains(feelings[i])){
-               return feelings[i];
-            }
-         }
-         return("none");
-      }
-      else{
-         return("none");
+   private String findPhrase(String statement1){
+      String statement = statement1.toLowerCase();
+      switch(lastNode){
+         case 'c':
+            for(int i = 0; i < orchestra.length; i++){
+               if(statement.contains(orchestra[i])){
+                  orchFamily = i;
+                  return orchestra[i];
+                  }
+               }
+         case 'e':
+            for(int i = 0; i < eras.length; i++){
+               if(statement.contains(eras[i])){
+                  erasMatch = i;
+                  return eras[i];
+                  }
+               }
+         case 'f':
+            for(int i = 0; i < genres.length; i++){
+               if(statement.contains(genres[i])){
+                  return genres[i];
+                  }
+               }
+         case 'i':
+            for(int i = 0; i < format.length; i++){
+               if(statement.contains(format[i])){
+                  formatMatch = i;
+                  return format[i];
+                  }
+               }
+         case 'n':
+            for(int i = 0; i < feelings.length; i++){
+               if(statement.contains(feelings[i])){
+                  return feelings[i];
+                  }
+               }
+        default:
+            return "none";
+      
+      
       }
    }
-   
    private String nodeE(String statement){
       String family;
       String myInstrument = findPhrase(statement);
@@ -368,6 +344,7 @@ public class MagpieBaseGo{
    }
    
    private String nodeG(String statement){
+     
       String myEra = findPhrase(statement);
       String myDescription = eraDescription[erasMatch];
       String response = ("Excellent taste! The " + myEra + " era is known for " + myDescription + 
