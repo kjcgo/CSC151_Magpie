@@ -73,7 +73,7 @@ public class MagpieBaseGo{
    List<String> affirmative = new ArrayList<>(List.of("yes", "sure", "alright", "okay", "ok", "yeah"));
 	
    //composers 
-   String[] composers = {"Mozart", "Beethoven", "Bach", "Chopin", "Rachmaninov"};
+   String[] composers = {"Mozart", "Beethoven", "Bach", "Chopin", "Rachmaninov", "Vivaldi"};
    
    //greet the user
    public String getGreeting(){
@@ -119,7 +119,7 @@ public class MagpieBaseGo{
             lastNode = 'g';
             break;
          case 'h':
-            response = "Classical music can be categorized into the Baroque, Classical, Romantic, and 20th century eras. May I recommend a piece to you?";
+            response = "May I recommend a piece to you?";
             lastNode = 'h';
             break;
          case 'i':
@@ -216,7 +216,7 @@ public class MagpieBaseGo{
             lastNode = '4';
             break;
          case '5':
-            response = "I recommend Florence Price! She was the first African American woman to have her work performed by a major orchestra.";
+            response = "I recommend Florence Price! She was the first African American woman to have her work performed by a \nmajor orchestra.";
             lastNode = '5';
             break;
          case '6':
@@ -360,6 +360,9 @@ public class MagpieBaseGo{
                   return 'l';
                }
             case 'h':
+               if(!suggestPiece && !affirm){
+                  return 'w';
+               }
                if(affirm){
                   return 'i';
                }
@@ -411,6 +414,12 @@ public class MagpieBaseGo{
                   return 'w';
                }
             case 'w':
+               if(!suggestPiece && !affirm){
+                  return 'y';
+               }
+               if(!suggestPiece && affirm){
+                  return 'k';
+               }
                if(affirm){
                   return 'x';
                }
@@ -476,7 +485,12 @@ public class MagpieBaseGo{
             case 's':
                return 'h';
             case 'y':
+               if(!suggestPiece){
+                  return 'k';
+               }
+               else{
                return 'x';
+               }
             case 'z':
             case '1':
             case '3':
@@ -552,6 +566,7 @@ public class MagpieBaseGo{
                   }
                }
                break;
+         //u || t
          case 'u':
          case 't':
             for(int i = 0; i < composers.length; i++){
@@ -588,7 +603,8 @@ public class MagpieBaseGo{
          }
       }
       String response = ("The " + myInstrument + " is a great instrument! I like instruments from the " 
-      + family + " family. Do you have a favorite musical era?");
+      + family + " family. \nClassical music can be categorized into the Baroque, Classical, Romantic, and 20th century eras." + 
+      "\nDo you have a favorite musical era?");
       return response;
    }
    
@@ -598,7 +614,7 @@ public class MagpieBaseGo{
       //matches an era to a description
       String myDescription = eraDescription[erasMatch];
       String response = ("Excellent taste! The " + yourEra + " era is known for " + myDescription + 
-      " May I recommend a " + yourEra + " piece to you?");
+      " \nMay I recommend a " + yourEra + " piece to you?");
       return response;
    }
    
